@@ -160,9 +160,9 @@ export default function HikeForm({
         if (!date || isNaN(date.getTime())) {
           return 'Valid date is required';
         }
-        if (date > new Date()) {
-          return 'Date cannot be in the future';
-        }
+        // if (date > new Date()) {
+        //   return 'Date cannot be in the future';
+        // }
         const hundredYearsAgo = new Date();
         hundredYearsAgo.setFullYear(hundredYearsAgo.getFullYear() - 100);
         if (date < hundredYearsAgo) {
@@ -366,14 +366,6 @@ export default function HikeForm({
         <ThemedText style={styles.successMessage}>
           Your hike details have been saved successfully.
         </ThemedText>
-        <TouchableOpacity
-          style={[styles.button, styles.okButton]}
-          onPress={handleSuccessClose}
-        >
-          <ThemedText type="defaultSemiBold" style={styles.buttonText}>
-            OK
-          </ThemedText>
-        </TouchableOpacity>
       </ThemedView>
     );
   }
@@ -490,7 +482,6 @@ export default function HikeForm({
             mode="date"
             onChange={handleDateChange}
             display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-            maximumDate={new Date()}
           />
         )}
       </ThemedView>
